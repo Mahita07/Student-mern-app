@@ -3,16 +3,13 @@ import Form from "react-bootstrap/Form";
 import { useState} from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-export const StudentForm = () => {
-  const navigate = useNavigate();
+export const UpdateStudent = () => {
+  const navigate=useNavigate();
   //define state variable
   const [studentState, setStudentState] = useState({
     name: "",
     regno: "",
   });
-  const goBackHome = ()=>{
-    navigate("/");
-  }
 
   //handle change of text in form fields
   const handleChange = (e) => {
@@ -26,22 +23,26 @@ export const StudentForm = () => {
     e.preventDefault();
     console.log(studentState.name,studentState.regno);
     try {
-      const response = await axios.post('http://localhost:5000/createstudent', {
+      const response = await axios.put('http://localhost:5000/updatestudent', {
         name: studentState.name,
         reg_num: studentState.regno
       });
 
-      console.log('Student created:', response.data);
+      console.log('Student details updated', response.data);
       setStudentState({
         name: "",
         regno: "",
       });
-      alert("Student added successfully !");
+      alert("Student details updated");
       window.location.reload();
     } catch (error) {
       console.error('Error creating student:', error);
     }
   };
+
+  const goBackHome = ()=>{
+    navigate("/");
+  }
   return (
     <>
       <div
@@ -53,7 +54,7 @@ export const StudentForm = () => {
       alignItems: "center", // Center content vertically
     }}
   >
-        <h2>Create New Student Profile !</h2>
+        <h2>Update Student Details</h2>
         <Form onSubmit={onSubmit}>
           <Form.Group className="mb-3" controlId="formBasicName">
             <Form.Label>Name</Form.Label>

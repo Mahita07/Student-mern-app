@@ -38,10 +38,10 @@ app.put('/updatestudent',async(req,res)=>{
 
 //delete : remove details of a student
 app.delete('/deletestudent',async(req,res)=>{
-  const { reg_num} = req.body
-  await Student.deleteOne({reg_num:reg_num})
-
-  res.send({success:true})
+  const reg_num = req.query.reg_num;
+  console.log(reg_num);
+  await Student.deleteOne({reg_num:reg_num});
+  res.send({success:true});
 })
 
 //get: get details of all students
@@ -56,7 +56,8 @@ app.get('/getspecificstudent',async(req,res)=>{
   const student = await Student.findOne({reg_num:req.query.reg_num});
   console.log(student);
   res.send(student);
-})
+});
+
 
 
 
