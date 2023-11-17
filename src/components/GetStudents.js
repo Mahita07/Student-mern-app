@@ -27,7 +27,7 @@ export const GetStudents = () => {
           <h1>List of Students</h1>
           <ul>
             {data.map((student) => (
-              <li key={student.id}>
+              <li key={student._id}>
                 Name: {student.name}, Register Number: {student.reg_num}
               </li>
             ))}

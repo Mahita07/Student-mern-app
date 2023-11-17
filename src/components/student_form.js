@@ -55,6 +55,7 @@ export const StudentForm = () => {
               value={studentState.name}
               onChange={handleChange}
               placeholder="Enter Name"
+              style={{width:"200px"}}
             />
           </Form.Group>
 
@@ -65,6 +66,7 @@ export const StudentForm = () => {
               value={studentState.regno}
               onChange={handleChange}
               placeholder="Enter Register Number"
+              style={{width:"200px"}}
             />
           </Form.Group>
 
